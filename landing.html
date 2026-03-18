@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Тренинг по переговорам</title>
+  <title>Эдуард — бизнес-тренер и коуч</title>
   <style>
     * {
       margin: 0;
@@ -440,6 +440,137 @@
       text-decoration: none;
     }
 
+    /* ── TELEGRAM КНОПКА ── */
+    .btn-tg {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #229ED9;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 0.9rem 2.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-tg:hover {
+      background: #1a8bbf;
+      transform: translateY(-2px);
+    }
+
+    .btn-tg svg {
+      width: 22px;
+      height: 22px;
+      fill: #fff;
+      flex-shrink: 0;
+    }
+
+    .btn-tg-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: #229ED9;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.65rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      border: 2px solid #229ED9;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-tg-outline:hover {
+      background: #229ED9;
+      color: #fff;
+    }
+
+    .btn-tg-outline svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* ── ПРОДУКТЫ ── */
+    .products {
+      background: #fff;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      border-radius: 14px;
+      padding: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
+
+    .product-card.card-training {
+      background: linear-gradient(145deg, #ebf8ff, #bee3f8);
+      border: 1px solid #90cdf4;
+    }
+
+    .product-card.card-coaching {
+      background: linear-gradient(145deg, #f0fff4, #c6f6d5);
+      border: 1px solid #9ae6b4;
+    }
+
+    .product-card.card-mentoring {
+      background: linear-gradient(145deg, #fffbeb, #fefcbf);
+      border: 1px solid #fbd38d;
+    }
+
+    .product-icon {
+      font-size: 2.5rem;
+    }
+
+    .product-card h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #1a365d;
+    }
+
+    .product-card p {
+      color: #4a5568;
+      font-size: 0.95rem;
+      flex: 1;
+    }
+
+    .product-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .product-card ul li {
+      font-size: 0.9rem;
+      color: #2d3748;
+    }
+
+    .product-card ul li::before {
+      content: "→ ";
+      font-weight: 700;
+      color: #2b6cb0;
+    }
+
     /* ── АДАПТИВ ── */
     @media (max-width: 600px) {
       .hero h1 { font-size: 2rem; }
@@ -452,13 +583,16 @@
 
   <!-- НАВИГАЦИЯ -->
   <nav>
-    <div class="logo">НегоПро</div>
+    <div class="logo">Эдуард · Коуч</div>
     <div class="nav-links">
-      <a href="#benefits">Программа</a>
-      <a href="#speaker">Спикер</a>
+      <a href="#products">Услуги</a>
+      <a href="#speaker">Обо мне</a>
       <a href="#reviews">Отзывы</a>
       <a href="#pricing">Цены</a>
-      <a href="#register" class="btn-primary" style="padding:0.5rem 1.2rem; border-radius:6px;">Записаться</a>
+      <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg" style="padding:0.5rem 1.2rem; font-size:0.9rem;">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+        Написать
+      </a>
     </div>
   </nav>
 
@@ -468,11 +602,73 @@
       <div class="hero-badge">2-дневный интенсив · Живой формат</div>
       <h1>Переговоры, которые работают</h1>
       <p>Научитесь договариваться в любых условиях — с клиентами, партнёрами и командой. Практика с первого часа.</p>
-      <a href="#register" class="btn-primary">Занять место на тренинге</a>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="#products" class="btn-primary">Посмотреть услуги</a>
+        <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+          Написать в Telegram
+        </a>
+      </div>
       <div class="hero-stats">
         <div class="stat"><strong>500+</strong><span>выпускников</span></div>
         <div class="stat"><strong>92%</strong><span>применяют навыки</span></div>
         <div class="stat"><strong>8 лет</strong><span>опыта тренера</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПРОДУКТЫ -->
+  <section class="products" id="products">
+    <div class="container">
+      <h2 class="section-title">Форматы работы</h2>
+      <p class="section-subtitle">Выберите то, что подходит именно вам</p>
+      <div class="products-grid">
+
+        <div class="product-card card-training">
+          <div class="product-icon">🎓</div>
+          <h3>Бизнес-тренинги</h3>
+          <p>Групповые программы для команд и компаний. Прокачиваем навыки переговоров, продаж и управления — через практику и живые кейсы.</p>
+          <ul>
+            <li>Корпоративный формат или открытая группа</li>
+            <li>1–3 дня, от 6 до 20 участников</li>
+            <li>Адаптация под задачи бизнеса</li>
+          </ul>
+          <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg-outline">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+            Узнать подробнее
+          </a>
+        </div>
+
+        <div class="product-card card-coaching">
+          <div class="product-icon">🧭</div>
+          <h3>Коучинг</h3>
+          <p>Индивидуальные сессии для руководителей и предпринимателей. Помогаю найти ответы внутри себя и выйти на новый уровень.</p>
+          <ul>
+            <li>Разовая сессия или пакет из 5–10 встреч</li>
+            <li>Онлайн или очно, 60–90 минут</li>
+            <li>Работа с целями, блоками, решениями</li>
+          </ul>
+          <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg-outline">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+            Записаться на сессию
+          </a>
+        </div>
+
+        <div class="product-card card-mentoring">
+          <div class="product-icon">🚀</div>
+          <h3>Наставничество</h3>
+          <p>Долгосрочное сопровождение для тех, кто строит бизнес или карьеру. Я прохожу путь вместе с вами — от стратегии до результата.</p>
+          <ul>
+            <li>Программа от 3 до 6 месяцев</li>
+            <li>Еженедельные встречи + поддержка в чате</li>
+            <li>Доступ к инструментам и сети контактов</li>
+          </ul>
+          <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg-outline">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+            Обсудить программу
+          </a>
+        </div>
+
       </div>
     </div>
   </section>
@@ -563,9 +759,15 @@
       <div class="speaker-card">
         <div class="speaker-photo">👤</div>
         <div class="speaker-info">
-          <h3>Александр Петров</h3>
-          <div class="speaker-title">Бизнес-тренер, сертифицированный переговорщик</div>
-          <p>8 лет провёл переговоры на сумму свыше $50 млн в сфере B2B-продаж. Обучил более 500 менеджеров и руководителей. Автор курса «Жёсткие переговоры без потерь».</p>
+          <h3>Эдуард <!-- Ваша фамилия --></h3>
+          <div class="speaker-title">Бизнес-тренер · Коуч · Наставник</div>
+          <p><!-- Ваш опыт, достижения, специализация — заполните здесь --></p>
+          <div style="margin-top:1rem;">
+            <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg" style="font-size:0.9rem; padding:0.6rem 1.4rem;">
+              <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+              @eduardcoach
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -610,7 +812,10 @@
             <li>Раздаточные материалы</li>
             <li>Сертификат участника</li>
           </ul>
-          <a href="#register" class="btn-primary" style="width:100%; text-align:center; display:block;">Записаться</a>
+          <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg" style="width:100%; justify-content:center;">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+            Написать в Telegram
+          </a>
         </div>
         <div class="pricing-card popular">
           <div class="popular-badge">Популярный</div>
@@ -623,7 +828,10 @@
             <li>Видеозапись своих кейсов</li>
             <li>1 сессия обратной связи</li>
           </ul>
-          <a href="#register" class="btn-primary" style="width:100%; text-align:center; display:block;">Записаться</a>
+          <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg" style="width:100%; justify-content:center;">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+            Написать в Telegram
+          </a>
         </div>
         <div class="pricing-card">
           <h3>VIP</h3>
@@ -634,40 +842,36 @@
             <li>Разбор ваших реальных сделок</li>
             <li>Поддержка 3 месяца</li>
           </ul>
-          <a href="#register" class="btn-primary" style="width:100%; text-align:center; display:block;">Записаться</a>
+          <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg" style="width:100%; justify-content:center;">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+            Написать в Telegram
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- РЕГИСТРАЦИЯ -->
+  <!-- CTA -->
   <section class="register" id="register">
     <div class="container">
-      <h2 class="section-title">Записаться на тренинг</h2>
-      <p class="section-subtitle">Оставьте контакты — мы свяжемся и ответим на все вопросы</p>
-      <form class="register-form" onsubmit="handleSubmit(event)">
-        <input type="text" placeholder="Ваше имя" required>
-        <input type="tel" placeholder="Телефон" required>
-        <button type="submit" class="btn-primary">Записаться</button>
-      </form>
+      <h2 class="section-title">Готовы начать?</h2>
+      <p class="section-subtitle">Напишите мне в Telegram — обсудим вашу задачу и выберем подходящий формат</p>
+      <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg" style="font-size:1.15rem; padding:1rem 2.8rem;">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+        Написать @eduardcoach
+      </a>
     </div>
   </section>
 
   <!-- ФУТЕР -->
   <footer>
-    <p>© 2026 НегоПро. Все права защищены.</p>
+    <p>© 2026 Эдуард — бизнес-тренер и коуч</p>
     <p style="margin-top:0.5rem;">
-      <a href="#">Политика конфиденциальности</a> · <a href="#">Контакты</a>
+      <a href="https://t.me/eduardcoach" target="_blank">Telegram: @eduardcoach</a>
     </p>
   </footer>
 
   <script>
-    function handleSubmit(e) {
-      e.preventDefault();
-      alert('Спасибо! Мы свяжемся с вами в ближайшее время.');
-      e.target.reset();
-    }
-
     // Плавная прокрутка
     document.querySelectorAll('a[href^="#"]').forEach(link => {
       link.addEventListener('click', e => {
