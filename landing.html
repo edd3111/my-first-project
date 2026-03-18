@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Эдуард — бизнес-тренер и коуч</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      color: #2d3748;
+      line-height: 1.6;
+    }
+
+    /* ── НАВИГАЦИЯ ── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      z-index: 100;
+    }
+
+    nav .logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1a365d;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #4a5568;
+      margin-left: 2rem;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: #2b6cb0; }
+
+    /* ── ГЕРОЙ ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 60%, #3182ce 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      color: #fff;
+    }
+
+    .hero-content {
+      max-width: 720px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 0.4rem 1.2rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: #f6ad55;
+      color: #1a202c;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 0.9rem 2.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-primary:hover {
+      background: #ed8936;
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .stat span {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* ── СЕКЦИИ ── */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a365d;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #718096;
+      font-size: 1.05rem;
+      margin-bottom: 3rem;
+    }
+
+    /* ── ЧТО ВЫ ПОЛУЧИТЕ ── */
+    .benefits {
+      background: #f7fafc;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .benefit-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.8rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .benefit-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1a365d;
+      margin-bottom: 0.5rem;
+    }
+
+    .benefit-card p {
+      color: #718096;
+      font-size: 0.95rem;
+    }
+
+    /* ── ПРОГРАММА ── */
+    .program-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .program-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+    }
+
+    .program-day {
+      background: #2b6cb0;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .program-item h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a365d;
+      margin-bottom: 0.2rem;
+    }
+
+    .program-item p {
+      color: #718096;
+      font-size: 0.9rem;
+    }
+
+    /* ── СПИКЕР ── */
+    .speaker {
+      background: #f7fafc;
+    }
+
+    .speaker-card {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+      max-width: 750px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      flex-wrap: wrap;
+    }
+
+    .speaker-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #bee3f8, #2b6cb0);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .speaker-info h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #1a365d;
+      margin-bottom: 0.3rem;
+    }
+
+    .speaker-title {
+      color: #2b6cb0;
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .speaker-info p {
+      color: #718096;
+      font-size: 0.95rem;
+    }
+
+    /* ── ОТЗЫВЫ ── */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .review-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.8rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .review-stars {
+      color: #f6ad55;
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .review-card p {
+      color: #4a5568;
+      font-size: 0.95rem;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .review-author {
+      font-weight: 700;
+      color: #1a365d;
+      font-size: 0.9rem;
+    }
+
+    /* ── ЦЕНЫ ── */
+    .pricing {
+      background: #f7fafc;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .pricing-card.popular {
+      border-color: #2b6cb0;
+      position: relative;
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2b6cb0;
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.25rem 1rem;
+      border-radius: 20px;
+    }
+
+    .pricing-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1a365d;
+      margin-bottom: 0.5rem;
+    }
+
+    .price {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #2b6cb0;
+      margin: 1rem 0;
+    }
+
+    .price span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #718096;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .pricing-features li {
+      padding: 0.4rem 0;
+      color: #4a5568;
+      font-size: 0.9rem;
+    }
+
+    .pricing-features li::before {
+      content: "✓ ";
+      color: #38a169;
+      font-weight: 700;
+    }
+
+    /* ── РЕГИСТРАЦИЯ ── */
+    .register {
+      background: linear-gradient(135deg, #1a365d, #2b6cb0);
+      color: #fff;
+      text-align: center;
+    }
+
+    .register .section-title { color: #fff; }
+    .register .section-subtitle { color: rgba(255,255,255,0.8); }
+
+    .register-form {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .register-form input {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.85rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    /* ── ФУТЕР ── */
+    footer {
+      background: #1a202c;
+      color: #a0aec0;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #63b3ed;
+      text-decoration: none;
+    }
+
+    /* ── TELEGRAM КНОПКА ── */
+    .btn-tg {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #229ED9;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 0.9rem 2.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-tg:hover {
+      background: #1a8bbf;
+      transform: translateY(-2px);
+    }
+
+    .btn-tg svg {
+      width: 22px;
+      height: 22px;
+      fill: #fff;
+      flex-shrink: 0;
+    }
+
+    .btn-tg-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: #229ED9;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.65rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      border: 2px solid #229ED9;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-tg-outline:hover {
+      background: #229ED9;
+      color: #fff;
+    }
+
+    .btn-tg-outline svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* ── ПРОДУКТЫ ── */
+    .products {
+      background: #fff;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      border-radius: 14px;
+      padding: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
+
+    .product-card.card-training {
+      background: linear-gradient(145deg, #ebf8ff, #bee3f8);
+      border: 1px solid #90cdf4;
+    }
+
+    .product-card.card-coaching {
+      background: linear-gradient(145deg, #f0fff4, #c6f6d5);
+      border: 1px solid #9ae6b4;
+    }
+
+    .product-card.card-mentoring {
+      background: linear-gradient(145deg, #fffbeb, #fefcbf);
+      border: 1px solid #fbd38d;
+    }
+
+    .product-icon {
+      font-size: 2.5rem;
+    }
+
+    .product-card h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #1a365d;
+    }
+
+    .product-card p {
+      color: #4a5568;
+      font-size: 0.95rem;
+      flex: 1;
+    }
+
+    .product-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .product-card ul li {
+      font-size: 0.9rem;
+      color: #2d3748;
+    }
+
+    .product-card ul li::before {
+      content: "→ ";
+      font-weight: 700;
+      color: #2b6cb0;
+    }
+
+    /* ── АДАПТИВ ── */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+      nav .nav-links { display: none; }
+      .speaker-card { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- НАВИГАЦИЯ -->
+  <nav>
+    <div class="logo">Эдуард · Коуч</div>
+    <div class="nav-links">
+      <a href="#products">Услуги</a>
+      <a href="#speaker">Обо мне</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#pricing">Цены</a>
+      <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg" style="padding:0.5rem 1.2rem; font-size:0.9rem;">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+        Написать
+      </a>
+    </div>
+  </nav>
+
+  <!-- ГЕРОЙ -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">2-дневный интенсив · Живой формат</div>
+      <h1>Переговоры, которые работают</h1>
+      <p>Научитесь договариваться в любых условиях — с клиентами, партнёрами и командой. Практика с первого часа.</p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="#products" class="btn-primary">Посмотреть услуги</a>
+        <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+          Написать в Telegram
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>500+</strong><span>выпускников</span></div>
+        <div class="stat"><strong>92%</strong><span>применяют навыки</span></div>
+        <div class="stat"><strong>8 лет</strong><span>опыта тренера</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПРОДУКТЫ -->
+  <section class="products" id="products">
+    <div class="container">
+      <h2 class="section-title">Форматы работы</h2>
+      <p class="section-subtitle">Выберите то, что подходит именно вам</p>
+      <div class="products-grid">
+
+        <div class="product-card card-training">
+          <div class="product-icon">🎓</div>
+          <h3>Бизнес-тренинги</h3>
+          <p>Групповые программы для команд и компаний. Прокачиваем навыки переговоров, продаж и управления — через практику и живые кейсы.</p>
+          <ul>
+            <li>Корпоративный формат или открытая группа</li>
+            <li>1–3 дня, от 6 до 20 участников</li>
+            <li>Адаптация под задачи бизнеса</li>
+          </ul>
+          <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg-outline">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+            Узнать подробнее
+          </a>
+        </div>
+
+        <div class="product-card card-coaching">
+          <div class="product-icon">🧭</div>
+          <h3>Коучинг</h3>
+          <p>Индивидуальные сессии для руководителей и предпринимателей. Помогаю найти ответы внутри себя и выйти на новый уровень.</p>
+          <ul>
+            <li>Разовая сессия или пакет из 5–10 встреч</li>
+            <li>Онлайн или очно, 60–90 минут</li>
+            <li>Работа с целями, блоками, решениями</li>
+          </ul>
+          <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg-outline">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+            Записаться на сессию
+          </a>
+        </div>
+
+        <div class="product-card card-mentoring">
+          <div class="product-icon">🚀</div>
+          <h3>Наставничество</h3>
+          <p>Долгосрочное сопровождение для тех, кто строит бизнес или карьеру. Я прохожу путь вместе с вами — от стратегии до результата.</p>
+          <ul>
+            <li>Программа от 3 до 6 месяцев</li>
+            <li>Еженедельные встречи + поддержка в чате</li>
+            <li>Доступ к инструментам и сети контактов</li>
+          </ul>
+          <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg-outline">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+            Обсудить программу
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ЧТО ВЫ ПОЛУЧИТЕ -->
+  <section class="benefits" id="benefits">
+    <div class="container">
+      <h2 class="section-title">Что вы получите</h2>
+      <p class="section-subtitle">Конкретные навыки, которые можно применить уже на следующий день</p>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🎯</div>
+          <h3>Структура переговоров</h3>
+          <p>Пошаговая система подготовки и ведения переговоров от первого контакта до подписания.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🧠</div>
+          <h3>Психология влияния</h3>
+          <p>Техники убеждения, работа с возражениями и управление эмоциями за столом.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">💬</div>
+          <h3>Активное слушание</h3>
+          <p>Как слышать скрытые интересы собеседника и использовать их для win-win результата.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">⚡</div>
+          <h3>Жёсткие переговоры</h3>
+          <p>Противодействие манипуляциям, давлению и агрессивным тактикам оппонента.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🤝</div>
+          <h3>Win-Win стратегии</h3>
+          <p>Поиск взаимовыгодных решений, которые сохраняют отношения и приносят результат.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📋</div>
+          <h3>Рабочие материалы</h3>
+          <p>Чек-листы, скрипты и шаблоны для подготовки к переговорам любой сложности.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПРОГРАММА -->
+  <section id="program">
+    <div class="container">
+      <h2 class="section-title">Программа тренинга</h2>
+      <p class="section-subtitle">2 дня насыщенной практики</p>
+      <div class="program-list">
+        <div class="program-item">
+          <div class="program-day">День 1</div>
+          <div>
+            <h4>Основы и подготовка</h4>
+            <p>Анализ ситуации, постановка целей, изучение позиции оппонента, BATNA.</p>
+          </div>
+        </div>
+        <div class="program-item">
+          <div class="program-day">День 1</div>
+          <div>
+            <h4>Техники влияния и убеждения</h4>
+            <p>Аргументация, работа с возражениями, управление ходом диалога.</p>
+          </div>
+        </div>
+        <div class="program-item">
+          <div class="program-day">День 2</div>
+          <div>
+            <h4>Сложные переговоры</h4>
+            <p>Давление, манипуляции, тупиковые ситуации — как выходить и побеждать.</p>
+          </div>
+        </div>
+        <div class="program-item">
+          <div class="program-day">День 2</div>
+          <div>
+            <h4>Ролевые игры и разбор</h4>
+            <p>Переговорные симуляции с видеозаписью и персональной обратной связью тренера.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- СПИКЕР -->
+  <section class="speaker" id="speaker">
+    <div class="container">
+      <h2 class="section-title">Тренер</h2>
+      <p class="section-subtitle">Практик с реальным опытом переговоров</p>
+      <div class="speaker-card">
+        <div class="speaker-photo">👤</div>
+        <div class="speaker-info">
+          <h3>Эдуард <!-- Ваша фамилия --></h3>
+          <div class="speaker-title">Бизнес-тренер · Коуч · Наставник</div>
+          <p><!-- Ваш опыт, достижения, специализация — заполните здесь --></p>
+          <div style="margin-top:1rem;">
+            <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg" style="font-size:0.9rem; padding:0.6rem 1.4rem;">
+              <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+              @eduardcoach
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ОТЗЫВЫ -->
+  <section id="reviews">
+    <div class="container">
+      <h2 class="section-title">Отзывы участников</h2>
+      <p class="section-subtitle">Что говорят те, кто уже прошёл тренинг</p>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>"После тренинга закрыл сделку, которую не мог закрыть полгода. Техники работают в реальной жизни."</p>
+          <div class="review-author">Михаил К., коммерческий директор</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>"Очень понравился формат — никакой теории ради теории. Сразу практика, сразу разборы. Рекомендую."</p>
+          <div class="review-author">Елена С., руководитель отдела продаж</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★☆</div>
+          <p>"Наконец-то понял, почему терял клиентов на этапе обсуждения условий. Всё встало на свои места."</p>
+          <div class="review-author">Дмитрий Н., предприниматель</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ЦЕНЫ -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <h2 class="section-title">Тарифы</h2>
+      <p class="section-subtitle">Выберите формат участия</p>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Базовый</h3>
+          <div class="price">19 900 <span>₽</span></div>
+          <ul class="pricing-features">
+            <li>2 дня тренинга</li>
+            <li>Раздаточные материалы</li>
+            <li>Сертификат участника</li>
+          </ul>
+          <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg" style="width:100%; justify-content:center;">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+            Написать в Telegram
+          </a>
+        </div>
+        <div class="pricing-card popular">
+          <div class="popular-badge">Популярный</div>
+          <h3>Профи</h3>
+          <div class="price">29 900 <span>₽</span></div>
+          <ul class="pricing-features">
+            <li>2 дня тренинга</li>
+            <li>Раздаточные материалы</li>
+            <li>Сертификат участника</li>
+            <li>Видеозапись своих кейсов</li>
+            <li>1 сессия обратной связи</li>
+          </ul>
+          <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg" style="width:100%; justify-content:center;">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+            Написать в Telegram
+          </a>
+        </div>
+        <div class="pricing-card">
+          <h3>VIP</h3>
+          <div class="price">49 900 <span>₽</span></div>
+          <ul class="pricing-features">
+            <li>Всё из тарифа «Профи»</li>
+            <li>3 персональные сессии</li>
+            <li>Разбор ваших реальных сделок</li>
+            <li>Поддержка 3 месяца</li>
+          </ul>
+          <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg" style="width:100%; justify-content:center;">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+            Написать в Telegram
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="register" id="register">
+    <div class="container">
+      <h2 class="section-title">Готовы начать?</h2>
+      <p class="section-subtitle">Напишите мне в Telegram — обсудим вашу задачу и выберем подходящий формат</p>
+      <a href="https://t.me/eduardcoach" target="_blank" class="btn-tg" style="font-size:1.15rem; padding:1rem 2.8rem;">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+        Написать @eduardcoach
+      </a>
+    </div>
+  </section>
+
+  <!-- ФУТЕР -->
+  <footer>
+    <p>© 2026 Эдуард — бизнес-тренер и коуч</p>
+    <p style="margin-top:0.5rem;">
+      <a href="https://t.me/eduardcoach" target="_blank">Telegram: @eduardcoach</a>
+    </p>
+  </footer>
+
+  <script>
+    // Плавная прокрутка
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(link.getAttribute('href'))
+          ?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>
