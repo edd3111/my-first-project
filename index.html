@@ -3,708 +3,410 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Тренинг по переговорам — Мастер переговоров</title>
+  <title>DISC и конфликты — практическая памятка</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --primary: #A100FF;
-      --primary-dark: #7800BF;
-      --accent: #0D0D0D;
-      --accent-dark: #000000;
-      --light: #f7f7f8;
-      --text: #18181b;
-      --muted: #6b7280;
-      --white: #ffffff;
-      --radius: 6px;
+      --bg: #f2f5fa;
+      --surface: #ffffff;
+      --text: #10203d;
+      --muted: #5f6e85;
+      --line: #d9e0ec;
+      --blue: #123a7a;
+      --d: #c8232c;
+      --i: #f0af18;
+      --s: #5d9e31;
+      --c: #1d67a8;
+      --radius: 14px;
     }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
       color: var(--text);
-      background: var(--white);
-      line-height: 1.6;
+      background: linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
+      line-height: 1.45;
     }
 
-    a { text-decoration: none; color: inherit; }
-
-    /* NAV */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: #0D0D0D;
-      border-bottom: 1px solid #222;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 5%;
-      height: 64px;
+    .container {
+      width: min(1200px, 95%);
+      margin: 0 auto;
     }
 
-    .nav-logo {
-      color: var(--white);
-      font-size: 1.15rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-    }
-
-    .nav-logo span { color: var(--primary); }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: #888;
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--white); }
-
-    .nav-cta {
-      background: var(--primary);
-      color: var(--white) !important;
-      font-weight: 700;
-      padding: 0.5rem 1.3rem;
-      border-radius: var(--radius);
-      transition: background 0.2s !important;
-    }
-
-    .nav-cta:hover { background: var(--primary-dark) !important; }
-
-    /* HERO */
     .hero {
-      background: linear-gradient(140deg, #0D0D0D 0%, var(--primary-dark) 45%, var(--primary) 100%);
-      color: var(--white);
-      padding: 100px 5% 90px;
-      display: flex;
-      align-items: center;
-      gap: 4rem;
-    }
-
-    .hero-content { flex: 1; max-width: 600px; }
-
-    .hero-badge {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.08);
-      color: rgba(255,255,255,0.85);
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 100px;
-      padding: 0.3rem 1rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 1.4rem;
+      padding: 2rem 0 1.2rem;
+      text-align: center;
     }
 
     .hero h1 {
-      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-      line-height: 1.15;
+      color: #0d2c63;
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      letter-spacing: 0.4px;
       font-weight: 800;
-      margin-bottom: 1.4rem;
-      letter-spacing: -0.5px;
+      text-transform: uppercase;
     }
-
-    .hero h1 span { color: #ddb3ff; }
 
     .hero p {
-      font-size: 1.1rem;
-      color: #a0aec0;
-      margin-bottom: 2rem;
-      max-width: 480px;
-    }
-
-    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-
-    .btn-primary {
-      background: var(--white);
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 0.95rem;
-      padding: 0.9rem 2rem;
-      border-radius: var(--radius);
-      border: none;
-      cursor: pointer;
-      letter-spacing: 0.2px;
-      transition: opacity 0.2s, transform 0.1s;
-      display: inline-block;
-    }
-
-    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
-
-    .btn-outline {
-      color: var(--white);
-      border: 1.5px solid rgba(255,255,255,0.35);
-      padding: 0.88rem 1.8rem;
-      border-radius: var(--radius);
-      font-size: 0.95rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: border-color 0.2s, background 0.2s;
-      display: inline-block;
-    }
-
-    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.06); }
-
-    .hero-image {
-      flex: 1;
-      max-width: 380px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      padding: 2.5rem;
-      text-align: center;
-      backdrop-filter: blur(4px);
-    }
-
-    .hero-image .icon { font-size: 4.5rem; margin-bottom: 1rem; display: block; }
-
-    .hero-image p { color: rgba(255,255,255,0.55); font-size: 0.88rem; }
-
-    /* STATS */
-    .stats {
-      background: #0D0D0D;
-      padding: 2.8rem 5%;
-      display: flex;
-      justify-content: center;
-      gap: 5rem;
-      flex-wrap: wrap;
-    }
-
-    .stat { text-align: center; }
-    .stat-number { font-size: 2.4rem; font-weight: 800; line-height: 1; color: var(--primary); }
-    .stat-label { font-size: 0.8rem; font-weight: 500; margin-top: 0.4rem; color: rgba(255,255,255,0.45); letter-spacing: 0.5px; text-transform: uppercase; }
-
-    /* SECTION SHARED */
-    section { padding: 90px 5%; }
-    .section-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--primary);
-      margin-bottom: 0.7rem;
-    }
-    h2 {
-      font-size: clamp(1.7rem, 3vw, 2.3rem);
-      color: var(--text);
-      font-weight: 800;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-      letter-spacing: -0.3px;
-    }
-    .subtitle { font-size: 0.97rem; color: var(--muted); max-width: 540px; margin-bottom: 3rem; line-height: 1.7; }
-
-    /* PROBLEMS */
-    .problems { background: var(--light); }
-    .problems-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
-    .problem-card {
-      background: var(--white);
-      border-left: 3px solid var(--primary);
-      border-radius: var(--radius);
-      padding: 1.5rem 1.8rem;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
-    }
-    .problem-card h3 { font-size: 0.97rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text); }
-    .problem-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
-
-    /* PROGRAM */
-    .program-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    .module {
-      border: 1px solid #e4e4e7;
-      border-radius: var(--radius);
-      padding: 1.8rem 1.6rem 1.6rem;
-      position: relative;
-      transition: box-shadow 0.2s, border-color 0.2s;
-    }
-    .module:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-color: var(--primary); }
-    .module-num {
-      position: absolute;
-      top: -13px;
-      left: 1.6rem;
-      background: var(--accent);
-      color: var(--white);
-      font-weight: 700;
-      font-size: 0.72rem;
-      letter-spacing: 0.5px;
-      padding: 3px 10px;
-      border-radius: 100px;
-    }
-    .module h3 { font-size: 0.97rem; font-weight: 700; color: var(--text); margin-bottom: 0.7rem; }
-    .module ul { list-style: none; }
-    .module ul li {
-      font-size: 0.86rem;
+      margin-top: 0.6rem;
       color: var(--muted);
-      padding: 0.28rem 0;
-      padding-left: 1.1rem;
-      position: relative;
+      font-size: 0.96rem;
     }
-    .module ul li::before {
-      content: '→';
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.6rem 0 2rem;
+    }
+
+    .type-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 2px solid var(--line);
+      box-shadow: 0 6px 22px rgba(18, 58, 122, 0.06);
+      overflow: hidden;
+    }
+
+    .type-header {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+      padding: 1rem;
+      border-bottom: 2px solid var(--line);
+    }
+
+    .badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 1.55rem;
+      flex: 0 0 auto;
+    }
+
+    .type-title h2 {
+      font-size: 1.05rem;
+      letter-spacing: 0.3px;
+      line-height: 1.15;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    .type-title span {
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .type-section {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .type-section:last-child { border-bottom: 0; }
+
+    .type-section h3 {
+      font-size: 0.86rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .type-section ul {
+      list-style: none;
+      display: grid;
+      gap: 0.34rem;
+      font-size: 0.9rem;
+    }
+
+    .type-section li { padding-left: 0.86rem; position: relative; }
+    .type-section li::before {
+      content: "•";
       position: absolute;
       left: 0;
-      color: var(--primary);
-      font-size: 0.8rem;
+      top: 0;
+      font-weight: 800;
     }
 
-    /* TRAINER */
-    .trainer { background: var(--light); }
-    .trainer-card {
-      display: flex;
-      gap: 3rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .trainer-avatar {
-      width: 190px;
-      height: 190px;
-      border-radius: 12px;
-      overflow: hidden;
-      flex-shrink: 0;
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-      box-shadow: 0 8px 32px rgba(161,0,255,0.25);
-    }
-    .trainer-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-    }
-    .trainer-info { flex: 1; min-width: 260px; }
-    .trainer-info h3 { font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 0.3rem; }
-    .trainer-position { color: var(--primary); font-weight: 600; font-size: 0.9rem; margin-bottom: 1rem; }
-    .trainer-info p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1rem; }
-    .trainer-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .tag {
-      background: var(--white);
-      border: 1px solid #e4e4e7;
-      color: var(--text);
-      font-size: 0.78rem;
-      padding: 0.3rem 0.85rem;
-      border-radius: 100px;
-      font-weight: 500;
+    .quote {
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 0.65rem 0.8rem;
+      font-size: 0.9rem;
+      font-weight: 600;
     }
 
-    /* TESTIMONIALS */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    .testimonial {
-      background: var(--white);
-      border: 1px solid #e4e4e7;
-      border-radius: var(--radius);
-      padding: 1.8rem;
-    }
-    .stars { color: var(--primary); font-size: 1rem; margin-bottom: 0.9rem; letter-spacing: 1px; }
-    .testimonial p { font-size: 0.9rem; color: var(--muted); font-style: italic; margin-bottom: 1.1rem; line-height: 1.7; }
-    .testimonial-author { font-size: 0.85rem; font-weight: 700; color: var(--text); }
-    .testimonial-role { font-size: 0.78rem; color: var(--muted); margin-top: 0.15rem; }
-
-    /* PRICING */
-    .pricing { background: var(--light); }
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-      max-width: 900px;
-    }
-    .plan {
-      background: var(--white);
-      border: 1.5px solid #e4e4e7;
-      border-radius: 12px;
-      padding: 2.2rem;
-      transition: box-shadow 0.2s, border-color 0.2s;
-    }
-    .plan:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.09); border-color: #ccc; }
-    .plan.featured {
-      border-color: var(--primary);
-      position: relative;
-      box-shadow: 0 4px 24px rgba(161,0,255,0.12);
-    }
-    .plan-badge {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--primary);
-      color: var(--white);
-      font-size: 0.7rem;
+    .key {
       font-weight: 700;
-      letter-spacing: 0.5px;
-      padding: 4px 14px;
-      border-radius: 100px;
-      white-space: nowrap;
+      text-align: center;
+      border-radius: 10px;
+      background: #f8fafc;
+      padding: 0.65rem;
+      font-size: 0.92rem;
+    }
+
+    .d { border-color: #ebc0c2; }
+    .d .badge { background: var(--d); }
+    .d .type-title h2, .d .type-section h3, .d li::before { color: var(--d); }
+
+    .i { border-color: #f5dba1; }
+    .i .badge { background: var(--i); }
+    .i .type-title h2, .i .type-section h3, .i li::before { color: #cf8d00; }
+
+    .s { border-color: #cde3bb; }
+    .s .badge { background: var(--s); }
+    .s .type-title h2, .s .type-section h3, .s li::before { color: #4b8325; }
+
+    .c { border-color: #c3d9ec; }
+    .c .badge { background: var(--c); }
+    .c .type-title h2, .c .type-section h3, .c li::before { color: #1d67a8; }
+
+    .section-title {
+      font-size: 1.42rem;
+      font-weight: 800;
+      color: #123a7a;
+      margin: 0.4rem 0 0.9rem;
       text-transform: uppercase;
     }
-    .plan-name { font-size: 0.7rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.7rem; }
-    .plan-price { font-size: 2.4rem; font-weight: 800; color: var(--text); line-height: 1; letter-spacing: -1px; }
-    .plan-price sup { font-size: 1rem; vertical-align: super; letter-spacing: 0; }
-    .plan-price span { font-size: 0.88rem; font-weight: 400; color: var(--muted); letter-spacing: 0; }
-    .plan-desc { font-size: 0.84rem; color: var(--muted); margin: 0.8rem 0 1.4rem; line-height: 1.6; }
-    .plan-features { list-style: none; margin-bottom: 1.8rem; }
-    .plan-features li {
-      font-size: 0.86rem;
-      color: var(--text);
-      padding: 0.4rem 0;
-      border-bottom: 1px solid #f4f4f5;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-    }
-    .plan-features li::before { content: '✓'; color: var(--primary); font-weight: 700; flex-shrink: 0; }
-    .plan .btn-primary { width: 100%; text-align: center; background: var(--accent); color: var(--white); }
 
-    /* CTA */
-    .cta-section {
-      background: #0D0D0D;
-      color: var(--white);
-      text-align: center;
-      padding: 90px 5%;
-      border-top: 1px solid #1f1f1f;
-    }
-    .cta-section h2 { color: var(--white); margin-bottom: 1rem; }
-    .cta-section p { color: rgba(255,255,255,0.45); max-width: 480px; margin: 0 auto 2.2rem; }
-    .cta-section .btn-primary { background: var(--primary); color: var(--white); }
-
-    /* FAQ */
-    .faq-list { max-width: 720px; }
-    .faq-item {
-      border-bottom: 1px solid #e4e4e7;
-      padding: 1.3rem 0;
-    }
-    .faq-question {
-      font-weight: 700;
-      font-size: 0.97rem;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-      cursor: pointer;
-    }
-    .faq-answer { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
-
-    /* FOOTER */
-    footer {
-      background: #0D0D0D;
-      border-top: 1px solid #1f1f1f;
-      color: #555;
-      padding: 2.5rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
+    .reaction-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(190px, 1fr));
       gap: 1rem;
+      margin-bottom: 2rem;
     }
-    footer .nav-logo { font-size: 1rem; }
-    footer p { font-size: 0.82rem; }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .hero { flex-direction: column; padding: 60px 5%; }
-      .hero-image { max-width: 100%; }
-      .nav-links { display: none; }
-      .stats { gap: 2rem; }
-      .trainer-card { flex-direction: column; align-items: flex-start; }
+    .reaction-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 2px solid var(--line);
+      padding: 1rem;
+    }
+
+    .reaction-card h4 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 0.2rem;
+    }
+
+    .reaction-card p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .reaction-card ul {
+      list-style: none;
+      font-size: 0.9rem;
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    .reaction-card li::before {
+      content: "✓";
+      margin-right: 0.45rem;
+      font-weight: 800;
+    }
+
+    .r-d h4, .r-d li::before { color: var(--d); }
+    .r-i h4, .r-i li::before { color: #cf8d00; }
+    .r-s h4, .r-s li::before { color: #4b8325; }
+    .r-c h4, .r-c li::before { color: var(--c); }
+
+    .insight {
+      border-top: 8px solid #123a7a;
+    }
+
+    .insight h4, .insight li::before { color: #123a7a; }
+
+    .principles {
+      background: var(--surface);
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.1rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .principles-grid {
+      margin-top: 0.8rem;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(160px, 1fr));
+      gap: 0.8rem;
+    }
+
+    .principle {
+      background: #f8fbff;
+      border: 1px solid #dce7f6;
+      border-radius: 10px;
+      padding: 0.8rem;
+    }
+
+    .principle strong {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: #123a7a;
+      font-size: 0.9rem;
+    }
+
+    .principle span {
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.82rem;
+      padding: 0.6rem 0 1.5rem;
+    }
+
+    @media (max-width: 1100px) {
+      .cards-grid { grid-template-columns: repeat(2, minmax(220px, 1fr)); }
+      .reaction-grid { grid-template-columns: repeat(2, minmax(220px, 1fr)); }
+      .insight { grid-column: span 2; }
+      .principles-grid { grid-template-columns: repeat(2, minmax(180px, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .cards-grid,
+      .reaction-grid,
+      .principles-grid { grid-template-columns: 1fr; }
+      .insight { grid-column: auto; }
     }
   </style>
 </head>
 <body>
+  <main class="container">
+    <header class="hero">
+      <h1>Как ведут себя в конфликте психотипы DISC</h1>
+      <p>Памятка для руководителей, менеджеров и команд: как снизить эскалацию и договориться быстрее.</p>
+    </header>
 
-<!-- NAVIGATION -->
-<nav>
-  <div class="nav-logo">Мастер<span>Переговоров</span></div>
-  <ul class="nav-links">
-    <li><a href="#program">Программа</a></li>
-    <li><a href="#trainer">Тренер</a></li>
-    <li><a href="#pricing">Стоимость</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="https://t.me/eduardcoach" class="nav-cta" target="_blank" rel="noopener">Записаться</a></li>
-  </ul>
-</nav>
+    <section class="cards-grid">
+      <article class="type-card d">
+        <div class="type-header">
+          <div class="badge">D</div>
+          <div class="type-title"><h2>Dominance</h2><span>Давление / Контроль</span></div>
+        </div>
+        <div class="type-section"><h3>Как ведёт себя в конфликте</h3><ul><li>Идёт прямо в конфликт</li><li>Говорит жёстко и быстро</li><li>Хочет решить «здесь и сейчас»</li><li>Не терпит медлительности</li></ul></div>
+        <div class="type-section"><h3>Внутренняя логика</h3><p class="quote">«Нужно быстро решить проблему»</p></div>
+        <div class="type-section"><h3>Риски</h3><ul><li>Усиливает напряжение</li><li>Подавляет других</li><li>Не слышит нюансы</li></ul></div>
+        <div class="type-section"><h3>Как лучше вести себя</h3><ul><li>Коротко и по делу</li><li>Опора на факты</li><li>Чёткие рамки и решения</li></ul></div>
+        <div class="type-section"><div class="key">Ключ: структура, конкретика, скорость</div></div>
+      </article>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="hero-badge">Тренинг · 2 дня</div>
-    <h1>Переговоры, которые<br><span>приносят результат</span></h1>
-    <p>Научитесь добиваться выгодных условий, управлять диалогом и выходить победителем из любой переговорной ситуации.</p>
-    <div class="hero-actions">
-      <a href="https://t.me/eduardcoach" class="btn-primary" target="_blank" rel="noopener">Записаться на тренинг</a>
-      <a href="#program" class="btn-outline">Смотреть программу</a>
-    </div>
-  </div>
-  <div class="hero-image">
-    <span class="icon">🤝</span>
-    <p>Следующий поток<br><strong style="color:#ddb3ff; font-size:1.1rem; font-weight:800;">15–16 мая 2026</strong></p>
-    <p style="margin-top:0.8rem;">Москва · Онлайн</p>
-  </div>
-</section>
+      <article class="type-card i">
+        <div class="type-header">
+          <div class="badge">I</div>
+          <div class="type-title"><h2>Influence</h2><span>Эмоции / Влияние</span></div>
+        </div>
+        <div class="type-section"><h3>Как ведёт себя в конфликте</h3><ul><li>Уходит от жёсткой конфронтации</li><li>Переводит разговор в отношения</li><li>Говорит много, но не по сути</li><li>Шутит, чтобы снять напряжение</li></ul></div>
+        <div class="type-section"><h3>Внутренняя логика</h3><p class="quote">«Важно сохранить отношения»</p></div>
+        <div class="type-section"><h3>Риски</h3><ul><li>Избегает сути</li><li>Не доводит до решения</li><li>Уходит в поверхностность</li></ul></div>
+        <div class="type-section"><h3>Как лучше вести себя</h3><ul><li>Мягко, но структурно</li><li>Возвращать к сути</li><li>Поддерживать позитив</li></ul></div>
+        <div class="type-section"><div class="key">Ключ: позитив + структура + фокус</div></div>
+      </article>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stat">
-    <div class="stat-number">20 000+</div>
-    <div class="stat-label">Выпускников</div>
-  </div>
-  <div class="stat">
-    <div class="stat-number">20+ лет</div>
-    <div class="stat-label">Опыт тренера</div>
-  </div>
-  <div class="stat">
-    <div class="stat-number">94%</div>
-    <div class="stat-label">Рекомендуют</div>
-  </div>
-  <div class="stat">
-    <div class="stat-number">40+</div>
-    <div class="stat-label">Тем</div>
-  </div>
-</div>
+      <article class="type-card s">
+        <div class="type-header">
+          <div class="badge">S</div>
+          <div class="type-title"><h2>Steadiness</h2><span>Стабильность / Гармония</span></div>
+        </div>
+        <div class="type-section"><h3>Как ведёт себя в конфликте</h3><ul><li>Избегает конфликта</li><li>Соглашается внешне</li><li>Переживает внутри</li><li>Затягивает обсуждение</li></ul></div>
+        <div class="type-section"><h3>Внутренняя логика</h3><p class="quote">«Важно сохранить спокойствие»</p></div>
+        <div class="type-section"><h3>Риски</h3><ul><li>Копит напряжение</li><li>Не говорит прямо</li><li>Пассивно сопротивляется</li></ul></div>
+        <div class="type-section"><h3>Как лучше вести себя</h3><ul><li>Спокойно и безопасно</li><li>Открытые вопросы</li><li>Давать время подумать</li></ul></div>
+        <div class="type-section"><div class="key">Ключ: безопасность, поддержка, уважение</div></div>
+      </article>
 
-<!-- PROBLEMS -->
-<section class="problems">
-  <div class="section-label">Для кого этот тренинг</div>
-  <h2>Узнаёте себя?</h2>
-  <p class="subtitle">Если хотя бы одна из ситуаций вам знакома — тренинг создан именно для вас.</p>
-  <div class="problems-grid">
-    <div class="problem-card">
-      <h3>Уступаете под давлением</h3>
-      <p>Соглашаетесь на невыгодные условия, когда собеседник настаивает или использует жёсткие приёмы.</p>
-    </div>
-    <div class="problem-card">
-      <h3>Теряетесь в конфликте</h3>
-      <p>Эмоции берут верх, и вы не можете спокойно отстоять свою позицию.</p>
-    </div>
-    <div class="problem-card">
-      <h3>Не умеете торговаться</h3>
-      <p>Называете цену и боитесь её защитить или попросить скидку у партнёра.</p>
-    </div>
-    <div class="problem-card">
-      <h3>Сделки срываются</h3>
-      <p>Переговоры заходят в тупик, и вы не знаете, как вывести их на нужный результат.</p>
-    </div>
-  </div>
-</section>
+      <article class="type-card c">
+        <div class="type-header">
+          <div class="badge">C</div>
+          <div class="type-title"><h2>Compliance</h2><span>Логика / Правильность</span></div>
+        </div>
+        <div class="type-section"><h3>Как ведёт себя в конфликте</h3><ul><li>Уходит в факты и детали</li><li>Критикует через логику</li><li>Может быть холодным</li><li>Анализирует до паузы</li></ul></div>
+        <div class="type-section"><h3>Внутренняя логика</h3><p class="quote">«Важно, чтобы было правильно»</p></div>
+        <div class="type-section"><h3>Риски</h3><ul><li>Паралич решений</li><li>Критичность и дистанция</li><li>Затяжной анализ</li></ul></div>
+        <div class="type-section"><h3>Как лучше вести себя</h3><ul><li>Логика и структура</li><li>Аргументы и критерии</li><li>Без давления</li></ul></div>
+        <div class="type-section"><div class="key">Ключ: данные, качество, правила</div></div>
+      </article>
+    </section>
 
-<!-- PROGRAM -->
-<section id="program">
-  <div class="section-label">Программа</div>
-  <h2>Что вы освоите за 2 дня</h2>
-  <p class="subtitle">16 часов практики, ролевые игры и разбор реальных кейсов участников.</p>
-  <div class="program-grid">
-    <div class="module">
-      <div class="module-num">Модуль 1</div>
-      <h3>Психология переговоров</h3>
-      <ul>
-        <li>Типы переговорщиков и стратегии</li>
-        <li>Управление эмоциями и стрессом</li>
-        <li>Сила позиции BATNA</li>
-      </ul>
-    </div>
-    <div class="module">
-      <div class="module-num">Модуль 2</div>
-      <h3>Подготовка и планирование</h3>
-      <ul>
-        <li>Матрица интересов сторон</li>
-        <li>Сценарии и точки выхода</li>
-        <li>Анализ контрагента</li>
-      </ul>
-    </div>
-    <div class="module">
-      <div class="module-num">Модуль 3</div>
-      <h3>Техники влияния</h3>
-      <ul>
-        <li>Якорение и управление ценой</li>
-        <li>Активное слушание и вопросы</li>
-        <li>Работа с возражениями</li>
-      </ul>
-    </div>
-    <div class="module">
-      <div class="module-num">Модуль 4</div>
-      <h3>Жёсткие переговоры</h3>
-      <ul>
-        <li>Распознавание манипуляций</li>
-        <li>Противодействие давлению</li>
-        <li>Выход из тупика</li>
-      </ul>
-    </div>
-    <div class="module">
-      <div class="module-num">Модуль 5</div>
-      <h3>Переговоры о цене</h3>
-      <ul>
-        <li>Аргументация ценности</li>
-        <li>Уступки и пакетные сделки</li>
-        <li>Закрытие на нужных условиях</li>
-      </ul>
-    </div>
-    <div class="module">
-      <div class="module-num">Модуль 6</div>
-      <h3>Практический турнир</h3>
-      <ul>
-        <li>Командные переговоры</li>
-        <li>Видеоразбор сессий</li>
-        <li>Индивидуальная обратная связь</li>
-      </ul>
-    </div>
-  </div>
-</section>
+    <section>
+      <h3 class="section-title">Реакция на D (Dominance): как отвечают другие типы</h3>
+      <div class="reaction-grid">
+        <article class="reaction-card r-d">
+          <h4>D vs D</h4>
+          <p>Давление на давление.</p>
+          <ul>
+            <li>Борьба за власть</li>
+            <li>Быстрый спор и эскалация</li>
+            <li>Важно замедлить темп</li>
+          </ul>
+        </article>
 
-<!-- TRAINER -->
-<section class="trainer" id="trainer">
-  <div class="section-label">Тренер</div>
-  <h2>Кто проводит тренинг</h2>
-  <div class="trainer-card">
-    <div class="trainer-avatar">
-      <img src="trainer.jpg" alt="Эдуард Абдульманов" />
-    </div>
-    <div class="trainer-info">
-      <h3>Эдуард Абдульманов</h3>
-      <div class="trainer-position">Эксперт по деловым переговорам</div>
-      <p>Провёл более 2 000 тренингов для компаний из списка Fortune 500 и российских корпораций. Лично участвовал в переговорах на сумму свыше $500 млн.</p>
-      <p>Автор книги «Переговоры без поражений» и сертифицированный тренер по методике Гарвардской школы переговоров.</p>
-      <div class="trainer-tags">
-        <span class="tag">Гарвардский метод</span>
-        <span class="tag">B2B-продажи</span>
-        <span class="tag">Корпоративные тренинги</span>
-        <span class="tag">M&amp;A переговоры</span>
+        <article class="reaction-card r-i">
+          <h4>I vs D</h4>
+          <p>Эмоции под давлением.</p>
+          <ul>
+            <li>Уходит от давления</li>
+            <li>Может нервничать</li>
+            <li>Нужно вернуть структуру</li>
+          </ul>
+        </article>
+
+        <article class="reaction-card r-s">
+          <h4>S vs D</h4>
+          <p>Закрывается и уходит внутрь.</p>
+          <ul>
+            <li>Соглашается формально</li>
+            <li>Скрывает мнение</li>
+            <li>Нужны безопасность и время</li>
+          </ul>
+        </article>
+
+        <article class="reaction-card r-c">
+          <h4>C vs D</h4>
+          <p>Логика против давления.</p>
+          <ul>
+            <li>Уходит в аргументы</li>
+            <li>Становится критичным</li>
+            <li>Помогают критерии решения</li>
+          </ul>
+        </article>
+
+        <article class="reaction-card insight">
+          <h4>Важные выводы</h4>
+          <p>D усиливает конфликт не из-за агрессии, а потому что ускоряет разговор.</p>
+          <ul>
+            <li>Не бороться с D, а управлять темпом</li>
+            <li>Не уходить от темы, фиксировать решение</li>
+            <li>Три фразы: «Коротко по сути», «Что конкретно?», «Давайте зафиксируем»</li>
+          </ul>
+        </article>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="section-label">Отзывы</div>
-  <h2>Что говорят участники</h2>
-  <p class="subtitle">Реальные результаты от выпускников наших тренингов.</p>
-  <div class="testimonials-grid">
-    <div class="testimonial">
-      <div class="stars">★★★★★</div>
-      <p>"После тренинга сразу закрыл сделку, которая зависала 4 месяца. Техника якорения и работа с возражениями — просто огонь."</p>
-      <div class="testimonial-author">Дмитрий К.</div>
-      <div class="testimonial-role">Директор по продажам, IT-компания</div>
-    </div>
-    <div class="testimonial">
-      <div class="stars">★★★★★</div>
-      <p>"Переговорила условия контракта и сэкономила компании 2,3 млн рублей. Вернула стоимость тренинга в первую же неделю."</p>
-      <div class="testimonial-author">Мария С.</div>
-      <div class="testimonial-role">Руководитель закупок</div>
-    </div>
-    <div class="testimonial">
-      <div class="stars">★★★★★</div>
-      <p>"Научился не паниковать при давлении. Теперь в жёстких переговорах чувствую себя уверенно, а не загнанно."</p>
-      <div class="testimonial-author">Андрей Т.</div>
-      <div class="testimonial-role">Предприниматель</div>
-    </div>
-  </div>
-</section>
+    <section class="principles">
+      <h3 class="section-title">Общие принципы работы в конфликте</h3>
+      <div class="principles-grid">
+        <div class="principle"><strong>Фокус на сути</strong><span>Возвращайте разговор к фактам, цели и итогу.</span></div>
+        <div class="principle"><strong>Слушайте активно</strong><span>Сначала понять позицию, потом предлагать решение.</span></div>
+        <div class="principle"><strong>Управляйте темпом</strong><span>Пауза и замедление снижают накал и ошибки.</span></div>
+        <div class="principle"><strong>Держите рамки</strong><span>Фиксируйте правила диалога и формат обсуждения.</span></div>
+        <div class="principle"><strong>Уважайте человека</strong><span>Можно не соглашаться, сохраняя контакт.</span></div>
+      </div>
+    </section>
+  </main>
 
-<!-- PRICING -->
-<section class="pricing" id="pricing">
-  <div class="section-label">Стоимость</div>
-  <h2>Выберите формат</h2>
-  <p class="subtitle">Все форматы включают доступ к записям и материалам тренинга.</p>
-  <div class="pricing-grid">
-    <div class="plan">
-      <div class="plan-name">Онлайн</div>
-      <div class="plan-price"><sup>₽</sup>18 900 <span>/ участник</span></div>
-      <div class="plan-desc">Трансляция в реальном времени + запись</div>
-      <ul class="plan-features">
-        <li>Прямой эфир 2 дня</li>
-        <li>Запись на 6 месяцев</li>
-        <li>Рабочие материалы PDF</li>
-        <li>Сертификат участника</li>
-      </ul>
-      <a href="https://t.me/eduardcoach" class="btn-primary" target="_blank" rel="noopener">Записаться</a>
-    </div>
-    <div class="plan featured">
-      <div class="plan-badge">Популярный выбор</div>
-      <div class="plan-name">Очный</div>
-      <div class="plan-price"><sup>₽</sup>34 900 <span>/ участник</span></div>
-      <div class="plan-desc">Живое участие в Москве с нетворкингом</div>
-      <ul class="plan-features">
-        <li>Очное участие 2 дня</li>
-        <li>Ролевые игры вживую</li>
-        <li>Запись на 6 месяцев</li>
-        <li>Рабочие материалы + книга</li>
-        <li>Сертификат участника</li>
-        <li>Нетворкинг-ужин</li>
-      </ul>
-      <a href="https://t.me/eduardcoach" class="btn-primary" target="_blank" rel="noopener">Записаться</a>
-    </div>
-    <div class="plan">
-      <div class="plan-name">Корпоратив</div>
-      <div class="plan-price" style="font-size:1.8rem;">По запросу</div>
-      <div class="plan-desc">Тренинг для команды на вашей территории</div>
-      <ul class="plan-features">
-        <li>Группа от 10 человек</li>
-        <li>Адаптация под вашу отрасль</li>
-        <li>Кейсы из вашей практики</li>
-        <li>Follow-up сессия</li>
-        <li>Командные сертификаты</li>
-      </ul>
-      <a href="https://t.me/eduardcoach" class="btn-primary" target="_blank" rel="noopener">Обсудить</a>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section" id="contact">
-  <div class="section-label" style="color: var(--primary);">Осталось 8 мест</div>
-  <h2>Готовы переговорить лучше?</h2>
-  <p>Оставьте заявку — свяжемся в течение 30 минут и ответим на все вопросы.</p>
-  <a href="https://t.me/eduardcoach" class="btn-primary cta-btn" target="_blank" rel="noopener">Оставить заявку</a>
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-  <div class="section-label">FAQ</div>
-  <h2>Частые вопросы</h2>
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-question">Подходит ли тренинг новичкам?</div>
-      <div class="faq-answer">Да, программа построена от базовых принципов к продвинутым техникам. Опыта в переговорах не требуется.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">Что будет, если я не смогу присутствовать в прямом эфире?</div>
-      <div class="faq-answer">Все участники получают запись занятий на 6 месяцев и могут изучить материал в удобное время.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">Можно ли оплатить от юридического лица?</div>
-      <div class="faq-answer">Да, мы работаем с юрлицами и предоставляем все необходимые закрывающие документы.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">Есть ли возврат средств?</div>
-      <div class="faq-answer">Полный возврат возможен за 7 дней до начала тренинга. После этого срока — 50% стоимости.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">Как выглядит корпоративный формат?</div>
-      <div class="faq-answer">Проводим тренинг на вашей площадке или онлайн, адаптируем кейсы под вашу отрасль, готовим отчёт по каждому участнику.</div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="nav-logo">Мастер<span>Переговоров</span></div>
-  <p>© 2026 МастерПереговоров. Все права защищены.</p>
-  <p><a href="mailto:info@master-peregovorov.ru" style="color:#a0aec0;">info@master-peregovorov.ru</a></p>
-</footer>
-
+  <footer>
+    Памятка DISC по работе с конфликтами · учебный лендинг
+  </footer>
 </body>
 </html>
